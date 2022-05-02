@@ -1,31 +1,25 @@
 const { NotImplementedError } = require('../extensions/index.js');
 
-// const { Node } = require('../extensions/list-tree.js');
+const { Node } = require('../extensions/list-tree.js');
 
 /**
 * Implement simple binary search tree according to task description
 * using Node from extensions
 */
-class Node{
-  constructor(data, left=null, right=null){
-    this.data=data;
-    this.left=left;
-    this.right=right;
-  }
-}
+
 class BinarySearchTree {
 
 constructor(){
-  this.root = null;
+  this.tree = null;
 }
 
   root() {
-    return this.root;
+    return this.tree;
   }
 
 
   add(data){
-    this.root = addWithin(this.root,data)
+    this.tree = addWithin(this.tree, data)
 
     function addWithin(node, data){
       if(!node){
@@ -47,14 +41,11 @@ constructor(){
 
 
 }
-
 }
 
 
-
-
   has(data) {
-      let current = this.root;
+      let current = this.tree;
       while (current){
         if (data === current.data){
           return true;
@@ -69,7 +60,7 @@ constructor(){
   }
 
   find(data) {
-  let current = this.root;
+  let current = this.tree;
   while (current.data !== data){
     if (data< current.data){
       current = current.left
@@ -99,6 +90,7 @@ constructor(){
         return node.left
       }
       let tempNode = node.right;
+
       while (tempNode.left !== null){
         tempNode = tempNode.left
       }
@@ -113,12 +105,12 @@ constructor(){
       return node;
     }
    }
-   this.root = removeNode(this.root, data)
+   this.tree = removeNode(this.tree, data)
   }
 
 
   min() {
-   let current = this.root;
+   let current = this.tree;
    while (current.left !== null){
      current=current.left
    }
@@ -126,7 +118,7 @@ constructor(){
   }
 
   max() {
-    let current = this.root;
+    let current = this.tree;
     while (current.right !== null){
       current=current.right
     }
